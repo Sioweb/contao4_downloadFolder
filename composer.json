@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Sioweb\\DownloadFilderBundle\\": "src/"
+            "Sioweb\\DownloadFolderBundle\\": "src/"
         },
         "classmap": [
             "src/Resources/contao/"
@@ -42,6 +42,6 @@
         "branch-alias": {
             "dev-develop": "4.4.x-dev"
         },
-        "contao-manager-plugin": "Sioweb\\DownloadFilderBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Sioweb\\DownloadFolderBundle\\ContaoManager\\Plugin"
     }
 }
