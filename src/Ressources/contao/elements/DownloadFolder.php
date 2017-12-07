@@ -5,7 +5,7 @@
  *
  */
 
-namespace sioweb\contao\extensions\backend;
+namespace Sioweb;
 use Contao;
 
 /**
