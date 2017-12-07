@@ -7,6 +7,7 @@
 
 namespace Sioweb;
 use Contao;
+use Contao\System;
 
 /**
 * @file DownloadFolder.php
@@ -100,13 +101,16 @@ class DownloadFolder extends \ContentElement {
 		$allowedDownload = trimsplit(',', strtolower($GLOBALS['TL_CONFIG']['allowedDownload']));
 
 		if(!is_dir($downloadPath)) {
-			$this->log('Try to Zip files, can\'t find folder \'dowloads\' in '.TL_ROOT.'/assets/downloads/',false,false);
+			System::log('Try to Zip files, can\'t find folder \'dowloads\' in '.TL_ROOT.'/assets/downloads/','compile ZIP-Download',false);
 			return false;
 		}
 		if(!$this->downloadFileTitle) {
-			$this->log('No downloadfile-title found, please add a filename.',false,false);
+			System::log('No downloadfile-title found, please add a filename.','compile ZIP-Download',false);
 			return false;
 		}
+		echo rand(1,10000);
+		die();
+
 
 		// Get all files
 		while($objFiles->next()) {

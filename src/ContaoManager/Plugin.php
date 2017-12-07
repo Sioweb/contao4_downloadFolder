@@ -22,7 +22,7 @@ class Plugin implements BundlePluginInterface
         return [
             BundleConfig::create('Sioweb\DownloadFolderBundle\SiowebDownloadFolderBundle')
                 ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
-                ->setReplace(['siowebDownloadFolder']),
+                ->setReplace(['downloadfolder']),
         ];
     }
 }
