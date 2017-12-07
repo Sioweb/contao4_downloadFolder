@@ -88,7 +88,7 @@ class DownloadFolder extends \ContentElement {
 		global $objPage;
 
 		$downloadPath = TL_ROOT.'/web/bundles/siowebdownloadfolder/downloads/';
-		$downloadFile = 'bundles/siowebdownloadfolder/'.date('Y-m-d')."_".$this->downloadFileTitle.".zip";
+		$downloadFile = 'bundles/siowebdownloadfolder/downloads/'.$this->downloadFileTitle.'.zip';
 
 		if(is_file($downloadFile)) {
 			unlink($downloadFile);
@@ -119,14 +119,17 @@ class DownloadFolder extends \ContentElement {
 			if($objFiles->type == 'file') {
 				$objFile = new \File($objFiles->path, true);
 
-				if(!in_array($objFile->extension, $allowedDownload) || preg_match('/^meta(_[a-z]{2})?\.txt$/', $objFile->basename))
+				if(!in_array($objFile->extension, $allowedDownload) || preg_match('/^meta(_[a-z]{2})?\.txt$/', $objFile->basename)) {
 					continue;
+				}
 					
 				$Pathinfo = pathinfo($objFiles->path);
-					/* The Zip-Path D: */
-				exec("cd '".TL_ROOT."/".$Pathinfo['dirname']."' && zip ".TL_ROOT.'/'.$downloadFile." ".$Pathinfo['filename'].".".$Pathinfo['extension'],$var);
-				#echo 'Dirname: '.$Pathinfo['dirname'].'<br>';
-				#echo '<pre>'.print_r($var,1).'</pre>';
+				/* The Zip-Path D: */
+				// echo "cd '".TL_ROOT."/".$Pathinfo['dirname']."' && ls -la && zip \"".TL_ROOT."/web/".$downloadFile."\" \"".$Pathinfo['basename']."\"<br>";
+				// echo '<pre>'.print_r($Pathinfo,1).'</pre>';
+				exec("cd '".TL_ROOT."/".$Pathinfo['dirname']."' && ls -la && zip \"".TL_ROOT."/web/".$downloadFile."\" \"".$Pathinfo['basename']."\"",$var);
+				// echo 'Dirname: '.$Pathinfo['dirname'].'<br>';
+				// echo '<pre>'.print_r($var,1).'</pre>';
 			} else {
 				$objSubfiles = \FilesModel::findByPid($objFiles->uuid);
 				
@@ -141,9 +144,11 @@ class DownloadFolder extends \ContentElement {
 
 					$Pathinfo = pathinfo($objSubfiles->path);
 					/* The Zip-Path D: */
-					#echo 'Dirname: '.$Pathinfo['dirname'].'<br>';	
-					exec("cd ".TL_ROOT."/".$Pathinfo['dirname']." && zip ".TL_ROOT.'/'.$downloadFile." ".$Pathinfo['filename'].".".$Pathinfo['extension'],$var);
-					#echo '<pre>'.print_r($var,1).'</pre>';
+					// echo "cd '".TL_ROOT."/".$Pathinfo['dirname']."' && ls -la && zip \"".TL_ROOT."/web/".$downloadFile."\" \"".$Pathinfo['basename']."\"<br>";
+					// echo '<pre>'.print_r($Pathinfo,1).'</pre>';
+					exec("cd '".TL_ROOT."/".$Pathinfo['dirname']."' && ls -la && zip \"".TL_ROOT."/web/".$downloadFile."\" \"".$Pathinfo['basename']."\"",$var);
+					// echo 'Dirname: '.$Pathinfo['dirname'].'<br>';
+					// echo '<pre>'.print_r($var,1).'</pre>';
 				}
 			}
 		}

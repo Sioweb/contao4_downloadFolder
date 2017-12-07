@@ -1,7 +1,7 @@
 {
     "name": "sioweb/downloadfolder",
     "type": "contao-bundle",
-    "description": "DownloadFilder for Contao 4",
+    "description": "Download whole folder as ZIP for Contao 4",
     "license": "MIT",
     "authors": [
         {
