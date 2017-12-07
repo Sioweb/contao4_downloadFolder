@@ -87,8 +87,8 @@ class DownloadFolder extends \ContentElement {
 	protected function compile() {
 		global $objPage;
 
-		$downloadPath = TL_ROOT.'/assets/downloads/';
-		$downloadFile = 'assets/downloads/'.date('Y-m-d')."_".$this->downloadFileTitle.".zip";
+		$downloadPath = TL_ROOT.'/web/bundles/siowebdownloadfolder/downloads/';
+		$downloadFile = 'bundles/siowebdownloadfolder/'.date('Y-m-d')."_".$this->downloadFileTitle.".zip";
 
 		if(is_file($downloadFile)) {
 			unlink($downloadFile);
@@ -101,16 +101,13 @@ class DownloadFolder extends \ContentElement {
 		$allowedDownload = trimsplit(',', strtolower($GLOBALS['TL_CONFIG']['allowedDownload']));
 
 		if(!is_dir($downloadPath)) {
-			System::log('Try to Zip files, can\'t find folder \'dowloads\' in '.TL_ROOT.'/assets/downloads/','compile ZIP-Download',false);
+			System::log('Try to Zip files, can\'t find folder \'dowloads\' in '.TL_ROOT.'/bundles/siowebdownloadfolder/','compile ZIP-Download',false);
 			return false;
 		}
 		if(!$this->downloadFileTitle) {
 			System::log('No downloadfile-title found, please add a filename.','compile ZIP-Download',false);
 			return false;
 		}
-		echo rand(1,10000);
-		die();
-
 
 		// Get all files
 		while($objFiles->next()) {
