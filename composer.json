@@ -1,0 +1,47 @@
+{
+    "name": "sioweb/downloadfolder",
+    "type": "contao-bundle",
+    "description": "DownloadFilder for Contao 4",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sascha Weidner",
+            "email": "support@sioweb.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "symfony/framework-bundle": "^2.8|^3.0",
+        "contao/core-bundle": "^4.3.1"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "conflict": {
+        "contao/core": "*",
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sioweb\\DownloadFilderBundle\\": "src/"
+        },
+        "classmap": [
+            "src/Resources/contao/"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "4.4.x-dev"
+        },
+        "contao-manager-plugin": "Sioweb\\DownloadFilderBundle\\ContaoManager\\Plugin"
+    }
+}
